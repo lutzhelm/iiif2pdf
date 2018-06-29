@@ -428,7 +428,9 @@ function iiif2pdf(config) {
     var ctx = canvas.getContext("2d")
     ctx.drawImage(img,0,0)
     var retimg = canvas.toDataURL('image/jpeg',q)
-    canvas.remove()
+    if (canvas.parentNode != null) {
+      canvas.parentNode.removeChild(canvas);
+    }
     return retimg
   }
 
